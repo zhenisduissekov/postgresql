@@ -1,9 +1,37 @@
 
-1) создал локальный докер образ (docker run --name postgres -p 5432:5432  -e POSTGRES_PASSWORD=postgres postgres)
-2) вошел в докер (docker exec -ti postgres bash)
-3) скачал wget (apt update && apt install wget -y)
-4) скачал БД и сразу залил его в postgres (wget https://storage.googleapis.com/thaibus/thai_small.tar.gz && tar -xf thai_small.tar.gz && psql -U postgres < thai.sql)
-5) вошел в psql (psql -U postgres)
-6) подключился к базе (\c thai)
-7) отправил запрос для подсчета (select count(*) from book.tickets;)
-8) получил результат 5185505
+1. Создал Docker образ:
+   ```bash
+   docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres
+   ```
+
+2. Вошел в Docker:
+   ```bash
+   docker exec -ti postgres bash
+   ```
+
+3. Скачал `wget`:
+   ```bash
+   apt update && apt install wget -y
+   ```
+
+4. Скачал БД:
+   ```bash
+   wget https://storage.googleapis.com/thaibus/thai_small.tar.gz && tar -xf thai_small.tar.gz && psql -U postgres < thai.sql
+   ```
+
+5. Вошел в `psql`:
+   ```bash
+   psql -U postgres
+   ```
+
+6. Подключился к базе:
+   ```sql
+   \c thai
+   ```
+
+7. Отправил запрос для подсчета:
+   ```sql
+   SELECT count(*) FROM book.tickets;
+   ```
+
+8. Получил результат: **5185505**
